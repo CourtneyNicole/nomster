@@ -4,6 +4,8 @@ class Place < ApplicationRecord
   validates :address, presence: true
   validates :description, presence: true
 
+  has_many :comments
+
   geocoded_by :address
   after_validation :geocode
 
