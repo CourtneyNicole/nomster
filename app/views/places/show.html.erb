@@ -106,7 +106,7 @@
       </div>
        <%= simple_form_for @photo, url: place_photos_path(@place) do |f| %>
       <div class="modal-body">
-        <%= f.input :photos %>
+        <%= f.input :picture %>
         <%= f.input :caption %>
       </div>
       <div class="modal-footer">
@@ -118,23 +118,35 @@
   </div>
 </div>
 
+
+<div class="col-10 offset-1">
+<h2 class="float-left">Photo</h2>
 <!-- Button trigger modal -->
 <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal2">
   Add a photo
 </button>
+</div>
+
 <div class="clear"></div>
 
-  <h1>Photos</h1>
+
 
 <% @place.photos.each do |photo| %>
   <div>
     <blockquote>
-      <b><%= photo.photos %></b> -
+      <% if photo.picture.present? %>
+       <%= image_tag photo.picture.url %>
+
+      <% end %>
+    
         <%= photo.caption %>
-      <small><%= photo.user.email %></small>
+      
     </blockquote>
+
   </div>
 <% end %>
+
+
 
 
 
